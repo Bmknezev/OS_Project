@@ -1,3 +1,0 @@
-/Users/braydon/Developer/C/OS_Project/cmake-build-debug/CMakeFiles/OS_Project.dir
-/Users/braydon/Developer/C/OS_Project/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/braydon/Developer/C/OS_Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir

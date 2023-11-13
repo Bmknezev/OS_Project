@@ -4,9 +4,10 @@
 #include <fstream>
 #include <string>
 
+
 void createFile( std::string fileName ) {
     // Create File
-    if ( fileName.find(".") == true ) {
+    if ( fileName.find('.') != std::string::npos ) {
         std::ofstream MyFile(fileName);
         std::cout << fileName << " Created!" << std::endl;
     }
@@ -16,24 +17,25 @@ void createFile( std::string fileName ) {
 }
 
 void deleteFile( std::string fileName ) {
-    char* str = (char)malloc( fileName.size() sizeof(char));
-    strcpy(str, fileName.c_str());
-    std::remove(str); // delete file
+    std::cout << "Deleting " << fileName << std::endl;
+    std::remove(fileName.c_str()); // delete file
 }
 
 void renameFile( std::string oldFileName, std::string newFileName ) {
-    char* oldFile = (char)malloc(oldFileName.size() sizeof(char));
-    strcpy(oldFile, oldFileName.c_str());
-
-    char* newFile = (char)malloc(newFileName.size() sizeof(char));
-    strcpy(newFile, newFileName.c_str());
-
-    rename(oldFile, newFile);
+    std::cout << "Renaming " << oldFileName << " to " << newFileName << std::endl;
+    std::rename(oldFileName.c_str(), newFileName.c_str()); // rename file
 }
 
-void copyFile(std::string originalFile, std::string newFile) {
-    std::ifstream  src(originalFile, std::ios::binary);
-    std::ofstream  dst(newFile, std::ios::binary);
+void copyFile(std::string originalFile, std::string newFile){
+}
 
-    dst << src.rdbuf();
+
+
+int main() {
+    std::string fileName = "test.txt";
+    std::string newFileName = "test2.txt";
+    createFile(fileName);
+    renameFile(fileName, newFileName);
+    //deleteFile(newFileName);
+    return 0;
 }
