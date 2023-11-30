@@ -2,13 +2,12 @@
 // Created by Francisco on 2023-11-29.
 //
 
-#include <iostream>
-#include <filesystem>
+#include "../functions.h"
 
 using namespace std;
 using namespace filesystem;
 
-bool exitSubdirectory(string root) {
+bool exitSubdirectory(path root) {
     try {
             // this saves the current path to a variable
         path currentPath = current_path();

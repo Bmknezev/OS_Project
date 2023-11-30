@@ -27,6 +27,6 @@ bool testForTxt(string fileName);
 
 void printCurrentDirectory();
 bool enterSubdirectory(string& subfolderName);
-bool exitSubdirectory(string root);
+bool exitSubdirectory(std::filesystem::path root);
 bool createFolder(string& folderName);
 bool deleteFolder(string& folderName);

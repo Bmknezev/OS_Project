@@ -2,8 +2,7 @@
 // Created by Francisco on 2023-11-29.
 //
 
-#include <iostream>
-#include <filesystem>
+#include "../functions.h"
 
 using namespace std;
 using namespace filesystem;

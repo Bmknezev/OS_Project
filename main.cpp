@@ -13,10 +13,10 @@ int main() {
     string blipto = "root";
     //printCurrentDirectory();
 
-    //createFolder(blipto);
+    createFolder(blipto);
     enterSubdirectory(blipto);
     printCurrentDirectory();
-    string root = filesystem::current_path();
+    filesystem::path root = filesystem::current_path();
 
     do {
         //get user input
