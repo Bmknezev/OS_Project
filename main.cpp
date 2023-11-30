@@ -78,8 +78,8 @@ int main() {
             string oldFileName;
             string newFileName;
             //get old file name and new file name from choice string
-            oldFileName = choice.substr(7, choice.find(" ", 7) - 7);
-            newFileName = choice.substr(choice.find(" ", 7) + 1);
+            oldFileName = choice.substr(7, choice.find(' ', 7) - 7);
+            newFileName = choice.substr(choice.find(' ', 7) + 1);
             //check if the user gave the file names
             if(oldFileName.empty() || newFileName.empty())
                 cout << "Error: no file name given" << endl;
@@ -131,13 +131,15 @@ int main() {
             string oldFile;
             string newFile;
             //get old file name and new file name from choice string
-            oldFile = choice.substr(5, choice.find(" ", 5) - 5);
-            newFile = choice.substr(choice.find(" ", 5) + 1);
+            oldFile = choice.substr(5, choice.find(' ', 5) - 5);
+            newFile = choice.substr(choice.find(' ', 5) + 1);
             //check if the user gave the file names
             if(oldFile.empty() || newFile.empty())
                 cout << "Error: no file name given" << endl;
             else
                 copyFile(oldFile, newFile);
+        }else{
+            cout << "Error: invalid command" << endl;
         }
 
         //loop until command is exit
