@@ -21,7 +21,7 @@ bool createFolder(string& folderName) {
             return true;
         } else {
                 // this prints a message to indicate that the function was unsuccessful
-            cerr << "Failed to create folder '" << folderName << "'." << endl;
+            //cerr << "Failed to create folder '" << folderName << "'." << endl;
             return false;
         }
     } catch (const exception& e) {
