@@ -14,81 +14,97 @@ int main() {
 
     do {
         //functions, new, remove, rename, write, modify, clear, read, copy, help, exit
-        cin >> choice;
+        getline(cin, choice);
 
-        if (choice == "new") {
-            string fileName;
-            cout << "Enter the name of the file: ";
-            cin >> fileName;
-            createFile(fileName);
-        }
-        else if (choice == "remove") {
-            string fileName;
-            cout << "Enter the name of the file: ";
-            cin >> fileName;
-            deleteFile(fileName);
-        }
-        else if (choice == "rename") {
+
+        if(choice.find("help") != string::npos){
+            if (choice.find("new") != string::npos) {
+                cout << "creates a new file" << endl << "usage: new <filename>" << endl;
+            } else if (choice.find("remove") != string::npos) {
+                cout << "deletes a file" << endl << "usage: remove <filename>" << endl;
+            } else if (choice.find("rename") != string::npos) {
+                cout << "renames a file" << endl << "usage: rename <old filename> <new filename>" << endl;
+            } else if (choice.find("write") != string::npos) {
+                cout << "writes text to a file" << endl << "usage: write <filename>" << endl;
+            } else if (choice.find("modify") != string::npos) {
+                cout << "inserts text into a file at a specific location" << endl << "usage: modify <filename>" << endl;
+            } else if (choice.find("clear") != string::npos) {
+                cout << "removes all text from a file" << endl << "usage: clear <filename>" << endl;
+            } else if (choice.find("read") != string::npos) {
+                cout << "reads all text from a file" << endl << "usage: read <filename> <number of lines per page>" << endl;
+            } else if (choice.find("copy") != string::npos) {
+                cout << "copies a file" << endl << "usage: copy <old filename> <new filename>" << endl;
+            }else{
+                cout << "new" << endl
+                     << "remove" << endl
+                     << "rename" << endl
+                     << "write" << endl
+                     << "modify" << endl
+                     << "clear" << endl
+                     << "read" << endl
+                     << "copy" << endl
+                     << "help" << endl
+                     << "exit" << endl;
+            }
+        }else if(choice.find("new") != string::npos){
+            choice.erase(0, 4);
+            if(choice.empty())
+                cout << "Error: no file name given" << endl;
+            else
+                createFile(choice);
+        }else if(choice.find("remove") != string::npos){
+            choice.erase(0, 7);
+            if(choice.empty())
+                cout << "Error: no file name given" << endl;
+            else
+                deleteFile(choice);
+        }else if(choice.find("rename") != string::npos){
             string oldFileName;
             string newFileName;
-            cout << "Enter the name of the file to rename: ";
-            cin >> oldFileName;
-            cout << "Enter the new name of the file: ";
-            cin >> newFileName;
-            renameFile(oldFileName, newFileName);
+            oldFileName = choice.substr(7, choice.find(" ", 7) - 7);
+            newFileName = choice.substr(choice.find(" ", 7) + 1);
+            if(oldFileName.empty() || newFileName.empty())
+                cout << "Error: no file name given" << endl;
+            else
+             renameFile(oldFileName, newFileName);
         }
-        else if (choice == "write") {
-            string fileName;
-            cout << "Enter the name of the file: ";
-            cin >> fileName;
-            writeTxt(fileName);
+        else if(choice.find("write") != string::npos){
+            choice.erase(0, 6);
+            if(choice.empty())
+                cout << "Error: no file name given" << endl;
+            else
+                writeTxt(choice);
         }
-        else if (choice == "modify") {
-            string fileName;
-            cout << "Enter the name of the file: ";
-            cin >> fileName;
-            modifyTxt(fileName);
+        else if(choice.find("modify") != string::npos){
+            choice.erase(0, 7);
+            if(choice.empty())
+                cout << "Error: no file name given" << endl;
+            else
+                modifyTxt(choice);
         }
-        else if (choice == "clear") {
-            string fileName;
-            cout << "Enter the name of the file: ";
-            cin >> fileName;
-            removeText(fileName);
+        else if(choice.find("clear") != string::npos){
+            choice.erase(0, 6);
+            if(choice.empty())
+                cout << "Error: no file name given" << endl;
+            else
+                removeText(choice);
         }
-        else if (choice == "read") {
-            string fileName;
-            cout << "Enter the name of the file: ";
-            cin >> fileName;
-            readFile(fileName);
+        else if(choice.find("read") != string::npos){
+            choice.erase(0, 5);
+            if(choice.empty())
+                cout << "Error: no file name given" << endl;
+            else
+                readFile(choice);
         }
-        else if (choice == "copy") {
+        else if(choice.find("copy") != string::npos){
             string oldFile;
             string newFile;
-            cout << "Enter the name of the file to copy: ";
-            cin >> oldFile;
-            cout << "Enter the name of the new file: ";
-            cin >> newFile;
-            copyFile(oldFile, newFile);
-        }
-        else if (choice == "help") {
-            cout << "Commands:" << endl
-            << "\tCreate a new file: new" << endl
-            << "\tDelete a file: remove" << endl
-            << "\tRename a file: rename" << endl
-            << "\tCopy a file: copy" << endl
-            << "\tMove a file from one directory to another: move" << endl
-            << "\tAppend text to the end of a text file: write" << endl
-            << "\tInsert text into a text file: modify" << endl
-            << "\tRemove all text in a text file: clear" << endl
-            << "\tRead all text from a text file: read" << endl
-            << "\tGet help with using a command: <command> help" << endl
-            << "\tExit the POFM: exit" << endl;
-        }
-        else if (choice == "exit") {
-            cout << "Exiting..." << endl;
-        }
-        else {
-            cout << "Invalid choice" << endl;
+            oldFile = choice.substr(5, choice.find(" ", 5) - 5);
+            newFile = choice.substr(choice.find(" ", 5) + 1);
+            if(oldFile.empty() || newFile.empty())
+                cout << "Error: no file name given" << endl;
+            else
+                copyFile(oldFile, newFile);
         }
 
     } while (choice != "exit");
