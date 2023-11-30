@@ -8,6 +8,14 @@
 using namespace std;
 using namespace filesystem;
 
+bool deleteFolder( string folderName, path folderPath){
+    // this deletes the folder and everything in it
+    remove_all(folderPath);
+    // this prints a success message
+    cout << "Folder '" << folderName << "' deleted successfully." << endl;
+    return true;
+}
+
 bool deleteFolder(string& folderName) {
     try {
             // this saves the current path to a variable
@@ -18,7 +26,7 @@ bool deleteFolder(string& folderName) {
             // this checks if the folder exists
         if (exists(folderPath) && is_directory(folderPath)) {
                 // this checks if the folder is not empty
-            if (!is_empty(folderPath)){
+            if (!filesystem::is_empty(folderPath)){
                     // this creates a string to hold the confirmation from the user
                 string confirmation = "";
                     // this prints a message asking if the user is sure they want to delete the folder
@@ -29,11 +37,7 @@ bool deleteFolder(string& folderName) {
 
                     // this checks if the user said yes
                 if (confirmation == "yes" || confirmation == "Yes"){
-                        // this deletes the folder and everything in it
-                    remove_all(folderPath);
-                        // this prints a success message
-                    cout << "Folder '" << folderName << "' deleted successfully." << endl;
-                    return true;
+                    return deleteFolder(folderName, folderPath);
                 }
                 else {
                         // this prints a message indicating why the deletion was cancelled
@@ -41,6 +45,7 @@ bool deleteFolder(string& folderName) {
                     return false;
                 }
             }
+            return deleteFolder(folderName, folderPath);
 
         } else {
                 // this prints a message indicating that the function was not successful

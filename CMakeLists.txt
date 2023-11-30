@@ -18,4 +18,6 @@ add_executable(OS_Project main.cpp
         "Command Functions/Traversal/createFolder.cpp"
         "Command Functions/Traversal/enterSubdirectory.cpp"
         "Command Functions/Traversal/exitSubdirectory.cpp"
-        "Command Functions/Traversal/deleteFolder.cpp")
+        "Command Functions/Traversal/deleteFolder.cpp"
+        "directory 1/blupt directory/blupt.cpp"
+)
