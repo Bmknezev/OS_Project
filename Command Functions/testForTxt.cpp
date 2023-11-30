@@ -1,6 +1,11 @@
 #include "functions.h"
 
 bool testForTxt(string fileName) {
-    return (fileName.find(".txt") != string::npos);
+    if (fileName.find(".txt") != string::npos){
+        return true;
+    } else {
+        cout<< "Error: file must be a .txt file" << endl;
+        return false;
+    }
 }
 
