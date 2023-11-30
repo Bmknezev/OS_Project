@@ -10,7 +10,7 @@ void modifyTxt(string fileName) {
     cout << "How many characters in would you like to insert the data? : ";
     cin >> numberOfCharacters;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cout << "Enter the data to append: ";
+    cout << "Enter the data to append(^X to end): ";
 
     string temp;
     ostringstream readFromFile;
