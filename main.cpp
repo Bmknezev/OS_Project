@@ -5,19 +5,13 @@
 using namespace std;
 
 int main() {
-    string choice;
+    string choice = "";
 
     //path currentPath = current_path();
     cout << "Welcome to the File Manager" << endl;
 
-    string blipto = "blipto";
-    //printCurrentDirectory();
-    getline(cin, blipto);
-
-    createFolder(blipto);
-    printCurrentDirectory();
-
     do {
+        printCurrentDirectory();
         //get user input
         getline(cin, choice);
 
@@ -148,5 +142,6 @@ int main() {
 
         //loop until command is exit
     } while (choice != "exit");
+
 
 }

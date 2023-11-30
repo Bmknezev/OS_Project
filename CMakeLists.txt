@@ -14,5 +14,8 @@ add_executable(OS_Project main.cpp
         "Command Functions/copyFile.cpp"
         "Command Functions/functions.h"
         "Command Functions/Text Files/testForTxt.cpp"
-        "Command Functions/Folders/printCurrentDirectory.cpp"
-        "Command Functions/Folders/createFolder.cpp")
+        "Command Functions/Traversal/printCurrentDirectory.cpp"
+        "Command Functions/Traversal/createFolder.cpp"
+        "Command Functions/Traversal/enterSubdirectory.cpp"
+        "Command Functions/Traversal/exitSubdirectory.cpp"
+        "Command Functions/Traversal/deleteFolder.cpp")

@@ -21,5 +21,11 @@ void modifyTxt(string fileName);
 void removeText(string fileName);
 void readFile(string fileName);
 bool testForTxt(string fileName);
+
+    // traversal
+
+void printCurrentDirectory();
+bool enterSubdirectory(string& subfolderName);
+bool exitSubdirectory();
 bool createFolder(string& folderName);
-int printCurrentDirectory();
+bool deleteFolder(string& folderName);
