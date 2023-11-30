@@ -8,8 +8,13 @@ int main() {
     string choice;
 
     //path currentPath = current_path();
-    //cout << "Welcome to the File Manager" << endl << currentPath << endl;
+    cout << "Welcome to the File Manager" << endl;
 
+    string blipto = "blipto";
+    //printCurrentDirectory();
+    getline(cin, blipto);
+
+    createFolder(blipto);
     printCurrentDirectory();
 
     do {

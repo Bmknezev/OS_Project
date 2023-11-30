@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "../functions.h"
 
 bool testForTxt(string fileName) {
     if (fileName.find(".txt") != string::npos){

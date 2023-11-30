@@ -7,11 +7,12 @@ add_executable(OS_Project main.cpp
         "Command Functions/createFile.cpp"
         "Command Functions/deleteFile.cpp"
         "Command Functions/renameFile.cpp"
-        "Command Functions/writeTxt.cpp"
-        "Command Functions/modifyTxt.cpp"
-        "Command Functions/removeTxt.cpp"
-        "Command Functions/readFile.cpp"
+        "Command Functions/Text Files/writeTxt.cpp"
+        "Command Functions/Text Files/modifyTxt.cpp"
+        "Command Functions/Text Files/removeTxt.cpp"
+        "Command Functions/Text Files/readFile.cpp"
         "Command Functions/copyFile.cpp"
         "Command Functions/functions.h"
-        "Command Functions/testForTxt.cpp"
-        "Command Functions/printCurrentDirectory.cpp")
+        "Command Functions/Text Files/testForTxt.cpp"
+        "Command Functions/Folders/printCurrentDirectory.cpp"
+        "Command Functions/Folders/createFolder.cpp")
