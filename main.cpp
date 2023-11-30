@@ -49,7 +49,10 @@ int main() {
                 cout << "creates a new folder" << endl << "usage: make <folder name>" << endl;
             } else if (choice.find("exit") != string::npos) {
                 cout << "exits the program" << endl << "usage: exit" << endl;
-            } else
+            } else if(choice.find("blango") != string::npos) {
+                cout << "deletes a folder" << endl << "usage: blango <folder name>" << endl;
+            }
+            else
                 cout << "new" << endl
                      << "remove" << endl
                      << "rename" << endl
@@ -61,6 +64,7 @@ int main() {
                      << "blipto" << endl
                      << "list" << endl
                      << "make" << endl
+                     << "blango" << endl
                      << "exit" << endl;
 
 
@@ -177,6 +181,13 @@ int main() {
         }else if(choice.find("exit") != string::npos) {
             //exit program
             cout << "Exiting program..." << endl;
+        }else if(choice.find("blango") != string::npos) {
+            //delete folder
+            choice.erase(0, 7);
+            if (choice.empty())
+                cout << "Error: no folder name given" << endl;
+            else
+                deleteFolder(choice);
         }
         else{
             cout << "Error: invalid command" << endl;
