@@ -5,13 +5,19 @@
 using namespace std;
 
 int main() {
-    string choice = "";
+    string choice;
 
     //path currentPath = current_path();
     cout << "Welcome to the File Manager" << endl;
 
+    string blipto = "root";
+    //printCurrentDirectory();
+
+    createFolder(blipto);
+    enterSubdirectory(blipto);
+    printCurrentDirectory();
+
     do {
-        printCurrentDirectory();
         //get user input
         getline(cin, choice);
 
@@ -136,12 +142,23 @@ int main() {
                 cout << "Error: no file name given" << endl;
             else
                 copyFile(oldFile, newFile);
-        }else{
+        }else if(choice.find("blipto") != string::npos) {
+            //navigate to subdirectory
+            string subfolderName;
+            subfolderName = choice.substr(7);
+            enterSubdirectory(subfolderName);
+        }else if(choice.find("blip") != string::npos) {
+            //navigate to parent directory
+            exitSubdirectory();
+        }else if(choice.find("list") != string::npos) {
+            //list all files in current directory
+            printCurrentDirectory();
+        }
+        else{
             cout << "Error: invalid command" << endl;
         }
 
         //loop until command is exit
     } while (choice != "exit");
-
 
 }
