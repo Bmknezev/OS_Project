@@ -37,7 +37,7 @@ bool testForTxt(string fileName) {
     }
 };
 
-void writeTxt(string fileName) {
+void appendTxt(string fileName) {
     if (testForTxt(fileName)) {
         ofstream outputFile;
         outputFile.open(fileName, ios::app);
@@ -45,22 +45,11 @@ void writeTxt(string fileName) {
         if (outputFile.is_open()) {
             string newData;
 
-            cout << "Enter the data to write (^X to end): ";
-            //keep getting input until ^X is entered
-            string s;
-            while (getline( std::cin, s ))
-            {
-                // Find ^X in s
-                auto n = s.find( '\x18' );
-                if (n != s.npos) s = s.substr( 0, n );
-
-                    outputFile << s << endl;
-
-                // If ^C was found in s, we're done reading input from user
-                if (n != s.npos) break;
-            }
+            cout << "Enter the data to append: ";
+            getline(cin, newData);
+            outputFile << newData << endl;
             outputFile.close();
-            cout << "Data written successfully." << endl;
+            cout << "Data appended successfully." << endl;
             cout << endl;
 
         }
@@ -189,7 +178,7 @@ int main() {
             string fileName;
             cout << "Enter the name of the file: ";
             cin >> fileName;
-            writeTxt(fileName);
+            appendTxt(fileName);
         }
         else if (choice == "modify") {
             string fileName;
