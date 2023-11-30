@@ -1,158 +1,12 @@
-#include <cstdio>
+
 #include <iostream>
-#include <fstream>
+
 #include <string>
-#include <sstream>
-#include <limits>
+
+#include "functions.h"
 
 using namespace std;
 
-void createFile(string fileName ) {
-    // Create File
-    if ( fileName.find('.') != string::npos ) {
-        ofstream MyFile(fileName);
-        cout << fileName << " Created!" << endl;
-    }
-    else {
-        cout << "Error: file does not have an extension" << endl;
-    }
-}
-
-void deleteFile( string fileName ) {
-    cout << "Deleting " << fileName << endl;
-    remove(fileName.c_str()); // delete file
-}
-
-void renameFile( string oldFileName, string newFileName ) {
-    cout << "Renaming " << oldFileName << " to " << newFileName << endl;
-    rename(oldFileName.c_str(), newFileName.c_str()); // rename file
-}
-
-bool testForTxt(string fileName) {
-    if (fileName.find(".txt") != string::npos) {
-        return true;
-    }
-    else {
-        return false;
-    }
-};
-
-void writeTxt(string fileName) {
-    if (testForTxt(fileName)) {
-        ofstream outputFile;
-        outputFile.open(fileName, ios::app);
-        cout << endl;
-        if (outputFile.is_open()) {
-            string newData;
-
-            cout << "Enter the data to write (^X to end): ";
-            //keep getting input until ^X is entered
-            string s;
-            while (getline( std::cin, s ))
-            {
-                // Find ^X in s
-                auto n = s.find( '\x18' );
-                if (n != s.npos) s = s.substr( 0, n );
-
-                    outputFile << s << endl;
-
-                // If ^C was found in s, we're done reading input from user
-                if (n != s.npos) break;
-            }
-            outputFile.close();
-            cout << "Data written successfully." << endl;
-            cout << endl;
-
-        }
-        else {
-            cout << "Failed to open the file." << endl;
-        }
-
-    }
-
-}
-
-void addTextToLocation(string fileName) {
-    if (!testForTxt(fileName)) { return; }
-    int numberOfCharacters = 0;
-    string newData;
-
-    cout << "How many characters in would you like to insert the data? : ";
-    cin >> numberOfCharacters;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cout << "Enter the data to append: ";
-
-    getline(cin, newData);
-
-    string temp;
-    ostringstream readFromFile;
-    ifstream readFile(fileName);
-    for (int i = 0; i < numberOfCharacters; i++) {
-        readFromFile << char(readFile.get() );
-    }
-    readFromFile << newData;
-    readFile >> temp;
-    readFromFile << temp;
-    ofstream out(fileName);
-    temp = readFromFile.str();
-    out << temp;
-    out.close();
-}
-
-void removeText(string fileName) {
-    if (testForTxt(fileName)) {
-        ofstream out(fileName);
-        out.close();
-    }
-
-}
-
-void readFile(string fileName) {
-    if ( !testForTxt(fileName) ) { return; }
-    ifstream readFile(fileName);
-    string data;
-
-    ostringstream sstr;
-    sstr << readFile.rdbuf();
-    data = sstr.str();
-    //readFile >> data;
-    int strLen = data.length();
-    int numberOfLinesPerPage;
-    cout << "How many lines per page? : ";
-    cin >> numberOfLinesPerPage;
-    int counter = 0;
-    for (int i = 0; i < strLen; i++) {
-        if ( data[i] == '\n' ) {
-            counter++;
-        }
-    }
-    int countLines = 0;
-    for (int i = 0; i < strLen; i++) {
-        cout << data[i];
-        if (data[i] == '\n') {
-            countLines++;
-        }
-        if (countLines >= numberOfLinesPerPage) {
-            string temp;
-            cin.ignore();
-            countLines = 0;
-        }
-
-    }
-}
-
-void copyFile(string oldFile, string newFile) {
-    if (!testForTxt(oldFile)) { return; }
-    ifstream readFile(oldFile);
-    string data;
-
-    ostringstream sstr;
-    sstr << readFile.rdbuf();
-    data = sstr.str();
-
-    ofstream writeFile(newFile);
-    writeFile << data;
-}
 
 
 int main() {
@@ -195,7 +49,7 @@ int main() {
             string fileName;
             cout << "Enter the name of the file: ";
             cin >> fileName;
-            addTextToLocation(fileName);
+            modifyTxt(fileName);
         }
         else if (choice == "clear") {
             string fileName;
