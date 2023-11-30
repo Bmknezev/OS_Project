@@ -59,9 +59,8 @@ void writeTxt(string fileName) {
                 // If ^C was found in s, we're done reading input from user
                 if (n != s.npos) break;
             }
-
             outputFile.close();
-            cout << "Data appended successfully." << endl;
+            cout << "Data written successfully." << endl;
             cout << endl;
 
         }
