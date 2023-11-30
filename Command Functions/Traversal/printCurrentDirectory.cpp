@@ -14,16 +14,22 @@ void printCurrentDirectory(){
             // this prints a header message to the user
         cout << "\nContents of the current directory:\n";
             // this prints all the folders and files in the directory
-        for (const auto& entry : directory_iterator(currentPath)) {
-                // this denotes whether they're a folder or a file
-            if (is_directory(entry.status())) {
-                cout << "<folder>";
-            } else {
-                cout << "<file>\t";
+
+            if (!filesystem::is_empty(currentPath)){
+                for (const auto& entry : directory_iterator(currentPath)) {
+                    // this denotes whether they're a folder or a file
+                    if (is_directory(entry.status())) {
+                        cout << "<folder>";
+                    } else {
+                        cout << "<file>\t";
+                    }
+                    // this prints the file name
+                    cout << entry.path().filename() << std::endl;
+                }
             }
-                // this prints the file name
-            cout << entry.path().filename() << std::endl;
-        }
+            else{
+                cout << "\tThis directory is empty" << endl;
+            }
     } catch (const exception& e) {
             // this prints an error message
         cerr << "Exception: " << e.what() << std::endl;
