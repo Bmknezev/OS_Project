@@ -13,9 +13,10 @@ int main() {
     string blipto = "root";
     //printCurrentDirectory();
 
-    createFolder(blipto);
+    //createFolder(blipto);
     enterSubdirectory(blipto);
     printCurrentDirectory();
+    string root = filesystem::current_path();
 
     do {
         //get user input
@@ -144,15 +145,26 @@ int main() {
                 copyFile(oldFile, newFile);
         }else if(choice.find("blipto") != string::npos) {
             //navigate to subdirectory
-            string subfolderName;
-            subfolderName = choice.substr(7);
-            enterSubdirectory(subfolderName);
-        }else if(choice.find("blip") != string::npos) {
-            //navigate to parent directory
-            exitSubdirectory();
+            choice.erase(0, 7);
+            if(choice.empty()) {
+                try {
+                    exitSubdirectory(root);
+                } catch (const exception& e) {
+                    cerr << "Error in exitSubdirectory: " << e.what() << endl;
+                }
+            }
+            else
+                enterSubdirectory(choice);
         }else if(choice.find("list") != string::npos) {
             //list all files in current directory
             printCurrentDirectory();
+        }else if(choice.find("mkdir") != string::npos) {
+            //create new folder
+            choice.erase(0, 6);
+            if (choice.empty())
+                cout << "Error: no folder name given" << endl;
+            else
+                createFolder(choice);
         }
         else{
             cout << "Error: invalid command" << endl;

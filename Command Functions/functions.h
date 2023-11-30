@@ -9,6 +9,7 @@
 #include <fstream>
 #include <cstdio>
 #include <iostream>
+#include <filesystem>
 
 using namespace std;
 
@@ -26,6 +27,6 @@ bool testForTxt(string fileName);
 
 void printCurrentDirectory();
 bool enterSubdirectory(string& subfolderName);
-bool exitSubdirectory();
+bool exitSubdirectory(string root);
 bool createFolder(string& folderName);
 bool deleteFolder(string& folderName);

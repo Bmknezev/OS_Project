@@ -8,7 +8,7 @@
 using namespace std;
 using namespace filesystem;
 
-bool exitSubdirectory() {
+bool exitSubdirectory(string root) {
     try {
             // this saves the current path to a variable
         path currentPath = current_path();
@@ -16,7 +16,7 @@ bool exitSubdirectory() {
         path parentPath = currentPath.parent_path();
 
             // this checks if the parent path is different from the current path
-        if (parentPath != currentPath) {
+        if (parentPath != currentPath && currentPath != root) {
                 // this changes the current path to be the parent path
             current_path(parentPath);
                 // this prints a message to indicate that this was successful
