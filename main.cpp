@@ -1,17 +1,16 @@
 #include <iostream>
 #include <string>
-#include <filesystem>
 #include "Command Functions/functions.h"
 
 using namespace std;
-using namespace filesystem;
 
 int main() {
     string choice;
 
-    path currentPath = current_path();
+    //path currentPath = current_path();
+    //cout << "Welcome to the File Manager" << endl << currentPath << endl;
 
-    cout << "Welcome to the File Manager" << endl << currentPath << endl;
+    printCurrentDirectory();
 
     do {
         //functions, new, remove, rename, write, modify, clear, read, copy, help, exit

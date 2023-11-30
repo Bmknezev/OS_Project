@@ -21,3 +21,4 @@ void modifyTxt(string fileName);
 void removeText(string fileName);
 void readFile(string fileName);
 bool testForTxt(string fileName);
+int printCurrentDirectory();
