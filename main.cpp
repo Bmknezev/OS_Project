@@ -145,78 +145,77 @@ void copyFile(string oldFile, string newFile) {
 
 int main() {
 
-    int choice;
+    string choice;
+    cout << "Welcome to the File Manager" << endl;
 
     do {
-        cout << "File Manager" << endl;
-        cout << "1. Create File" << endl;
-        cout << "2. Delete File" << endl;
-        cout << "3. Rename File" << endl;
-        cout << "4. Append Text" << endl;
-        cout << "5. Add Text to Location" << endl;
-        cout << "6. Remove Text" << endl;
-        cout << "7. Read File" << endl;
-        cout << "8. Copy File" << endl;
-        cout << "9. Exit" << endl;
-
-        cout << "Enter your choice: ";
+        //functions, new, remove, rename, write, modify, clear, read, copy, help, exit
         cin >> choice;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        string fileName;
-        string newFileName;
-        switch (choice) {
-        case 1:
-            cout << "Enter the file name: ";
-            getline(cin, fileName);
+
+        if (choice == "new") {
+            string fileName;
+            cout << "Enter the name of the file: ";
+            cin >> fileName;
             createFile(fileName);
-            break;
-        case 2:
-            cout << "Enter the file name: ";
-            getline(cin, fileName);
-            deleteFile(fileName);
-            break;
-        case 3:
-            cout << "Enter the file name: ";
-            getline(cin, fileName);
-            cout << "Enter the new file name: ";
-            getline(cin, newFileName);
-            renameFile(fileName, newFileName);
-            break;
-        case 4:
-            cout << "Enter the file name: ";
-            getline(cin, fileName);
-            appendTxt(fileName);
-            break;
-        case 5:
-            cout << "Enter the file name: ";
-            getline(cin, fileName);
-            addTextToLocation(fileName);
-            break;
-        case 6:
-            cout << "Enter the file name: ";
-            getline(cin, fileName);
-            removeText(fileName);
-            break;
-        case 7:
-            cout << "Enter the file name: ";
-            getline(cin, fileName);
-            readFile(fileName);
-            break;
-        case 8:
-            cout << "Enter the file name: ";
-            getline(cin, fileName);
-            cout << "Enter the new file name: ";
-            getline(cin, newFileName);
-            copyFile(fileName, newFileName);
-            break;
-        case 9:
-            cout << "Exiting..." << endl;
-            break;
-        default:
-            cout << "Invalid choice" << endl;
-            break;
         }
-        cout << endl;
-    } while (choice != 9);
+        else if (choice == "remove") {
+            string fileName;
+            cout << "Enter the name of the file: ";
+            cin >> fileName;
+            deleteFile(fileName);
+        }
+        else if (choice == "rename") {
+            string oldFileName;
+            string newFileName;
+            cout << "Enter the name of the file to rename: ";
+            cin >> oldFileName;
+            cout << "Enter the new name of the file: ";
+            cin >> newFileName;
+            renameFile(oldFileName, newFileName);
+        }
+        else if (choice == "write") {
+            string fileName;
+            cout << "Enter the name of the file: ";
+            cin >> fileName;
+            appendTxt(fileName);
+        }
+        else if (choice == "modify") {
+            string fileName;
+            cout << "Enter the name of the file: ";
+            cin >> fileName;
+            addTextToLocation(fileName);
+        }
+        else if (choice == "clear") {
+            string fileName;
+            cout << "Enter the name of the file: ";
+            cin >> fileName;
+            removeText(fileName);
+        }
+        else if (choice == "read") {
+            string fileName;
+            cout << "Enter the name of the file: ";
+            cin >> fileName;
+            readFile(fileName);
+        }
+        else if (choice == "copy") {
+            string oldFile;
+            string newFile;
+            cout << "Enter the name of the file to copy: ";
+            cin >> oldFile;
+            cout << "Enter the name of the new file: ";
+            cin >> newFile;
+            copyFile(oldFile, newFile);
+        }
+        else if (choice == "help") {
+            cout << "Functions: new, remove, rename, write, modify, clear, read, copy, help, exit" << endl;
+        }
+        else if (choice == "exit") {
+            cout << "Exiting..." << endl;
+        }
+        else {
+            cout << "Invalid choice" << endl;
+        }
+
+    } while (choice != "exit");
 
 }
