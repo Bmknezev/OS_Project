@@ -23,7 +23,7 @@ int main() {
         getline(cin, choice);
 
         //first check for help command
-        if(choice.find("help") != string::npos){
+        if(choice.find("help") != string::npos) {
             //check for specific help command
             if (choice.find("new") != string::npos) {
                 cout << "creates a new file" << endl << "usage: new <filename>" << endl;
@@ -41,8 +41,15 @@ int main() {
                 cout << "reads all text from a file" << endl << "usage: read <filename> <number of lines per page>" << endl;
             } else if (choice.find("copy") != string::npos) {
                 cout << "copies a file" << endl << "usage: copy <old filename> <new filename>" << endl;
-            }else{
-                //if no specific command is given, list all commands
+            } else if (choice.find("blipto") != string::npos) {
+                cout << "navigates to a subdirectory" << endl << "usage: blipto <subdirectory name (leave empty to navigate back)>" << endl;
+            } else if (choice.find("list") != string::npos) {
+                cout << "lists all files in current directory" << endl << "usage: list" << endl;
+            } else if (choice.find("make") != string::npos) {
+                cout << "creates a new folder" << endl << "usage: make <folder name>" << endl;
+            } else if (choice.find("exit") != string::npos) {
+                cout << "exits the program" << endl << "usage: exit" << endl;
+            } else
                 cout << "new" << endl
                      << "remove" << endl
                      << "rename" << endl
@@ -51,9 +58,11 @@ int main() {
                      << "clear" << endl
                      << "read" << endl
                      << "copy" << endl
-                     << "help" << endl
+                     << "blipto" << endl
+                     << "list" << endl
+                     << "make" << endl
                      << "exit" << endl;
-            }
+
 
         }
         //check for new command
@@ -158,9 +167,9 @@ int main() {
         }else if(choice.find("list") != string::npos) {
             //list all files in current directory
             printCurrentDirectory();
-        }else if(choice.find("mkdir") != string::npos) {
+        }else if(choice.find("make") != string::npos) {
             //create new folder
-            choice.erase(0, 6);
+            choice.erase(0, 5);
             if (choice.empty())
                 cout << "Error: no folder name given" << endl;
             else
