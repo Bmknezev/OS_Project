@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <limits>
 
 using namespace std;
 
@@ -207,7 +208,18 @@ int main() {
             copyFile(oldFile, newFile);
         }
         else if (choice == "help") {
-            cout << "Functions: new, remove, rename, write, modify, clear, read, copy, help, exit" << endl;
+            cout << "Commands:" << endl
+            << "\tCreate a new file: new" << endl
+            << "\tDelete a file: remove" << endl
+            << "\tRename a file: rename" << endl
+            << "\tCopy a file: copy" << endl
+            << "\tMove a file from one directory to another: move" << endl
+            << "\tAppend text to the end of a text file: write" << endl
+            << "\tInsert text into a text file: modify" << endl
+            << "\tRemove all text in a text file: clear" << endl
+            << "\tRead all text from a text file: read" << endl
+            << "\tGet help with using a command: <command> help" << endl
+            << "\tExit the POFM: exit" << endl;
         }
         else if (choice == "exit") {
             cout << "Exiting..." << endl;
