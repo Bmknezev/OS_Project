@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "functions.h"
+#include "Command Functions/functions.h"
 
 int main() {
 
