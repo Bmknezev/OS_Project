@@ -174,6 +174,9 @@ int main() {
                 cout << "Error: no folder name given" << endl;
             else
                 createFolder(choice);
+        }else if(choice.find("exit") != string::npos) {
+            //exit program
+            cout << "Exiting program..." << endl;
         }
         else{
             cout << "Error: invalid command" << endl;
